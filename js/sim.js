@@ -22,7 +22,7 @@ $(document).ready(function() {
             actualizar(x, this);
         },
         dragStopCallback: function(x, y) {
-            resultado(sliders, votos)
+            resultado(sliders, votos);
         }
     });
 
@@ -33,7 +33,7 @@ $(document).ready(function() {
             $('#sliderDS_B .valorB').text(Math.round(x * 100)+' %');
         },
         dragStopCallback: function(x, y) {
-            resultado(sliders, votos)
+            resultado(sliders, votos);
         }
     });
 
@@ -44,7 +44,7 @@ $(document).ready(function() {
             actualizar(x, this);
         },
         dragStopCallback: function(x, y) {
-            resultado(sliders, votos)
+            resultado(sliders, votos);
         }
     });
 
@@ -55,7 +55,7 @@ $(document).ready(function() {
             $('#sliderMM_B .valorB').text(Math.round(x * 100)+' %');
         },
         dragStopCallback: function(x, y) {
-            resultado(sliders, votos)
+            resultado(sliders, votos);
         }
     });
 
@@ -66,7 +66,7 @@ $(document).ready(function() {
             actualizar(x, this);
         },
         dragStopCallback: function(x, y) {
-            resultado(sliders, votos)
+            resultado(sliders, votos);
         }
     });
 
@@ -77,7 +77,7 @@ $(document).ready(function() {
             $('#sliderSM_B .valorB').text(Math.round(x * 100)+' %');
         },
         dragStopCallback: function(x, y) {
-            resultado(sliders, votos)
+            resultado(sliders, votos);
         }
     });
 
@@ -88,7 +88,7 @@ $(document).ready(function() {
             actualizar(x, this);
         },
         dragStopCallback: function(x, y) {
-            resultado(sliders, votos)
+            resultado(sliders, votos);
         }
     });
 
@@ -99,7 +99,7 @@ $(document).ready(function() {
             $('#sliderDC_B .valorB').text(Math.round(x * 100)+' %');
         },
         dragStopCallback: function(x, y) {
-            resultado(sliders, votos)
+            resultado(sliders, votos);
         }
     });
 
@@ -110,7 +110,7 @@ $(document).ready(function() {
             actualizar(x, this);
         },
         dragStopCallback: function(x, y) {
-            resultado(sliders, votos)
+            resultado(sliders, votos);
         }
     });
 
@@ -121,7 +121,7 @@ $(document).ready(function() {
             $('#sliderMS_B .valorB').text(Math.round(x * 100)+' %');
         },
         dragStopCallback: function(x, y) {
-            resultado(sliders, votos)
+            resultado(sliders, votos);
         }
     });
 
@@ -132,7 +132,7 @@ $(document).ready(function() {
             actualizar(x, this);
         },
         dragStopCallback: function(x, y) {
-            resultado(sliders, votos)
+            resultado(sliders, votos);
         }
     });
 
@@ -143,7 +143,7 @@ $(document).ready(function() {
             $('#sliderRS_B .valorB').text(Math.round(x * 100)+' %');
         },
         dragStopCallback: function(x, y) {
-            resultado(sliders, votos)
+            resultado(sliders, votos);
         }
     });
 
@@ -169,7 +169,7 @@ $(document).ready(function() {
     actualizar(ini, sliderDC);
     actualizar(ini, sliderMS);
     actualizar(ini, sliderRS);
-    resultado(sliders, votos)
+    resultado(sliders, votos);
 
 });
 
