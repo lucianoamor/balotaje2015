@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Simulador de balotaje</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if gt IE 9]>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<![endif]-->
+<!-- <link rel="shortcut icon" href="favicon.ico" /> -->
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/dragdealer.css" rel="stylesheet" />
+<link href="css/estilos.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <div class="row titulos">
+        <div class="col-xs-12">
+            <h1>Simulador de balotaje</h1>
+            <h3>Elección para Presidente 22/11/2015 (Argentina)</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="row resultados">
+                <span class="glyphicon hidden-xs"></span>
+                <div class="col-xs-6">
+                    <h2>Daniel Scioli</h2>
+                    <p class="DS valor"></p>
+                </div>
+                <div class="col-xs-6">
+                    <h2>Mauricio Macri</h2>
+                    <p class="MM valor"></p>
+                </div>
+            </div>
+            <div class="row candidato DS">
+                <div class="col-xs-3">
+                    <div class="valor DS"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="indicador DS pull-left"></div>
+                    <div class="indicador MM pull-right"></div>
+                    <div id="sliderDS" class="dragdealer">
+                        <div class="handle"><img src="img/ds.jpg" alt="Daniel Scioli"></div>
+                    </div>
+                    <div id="sliderDS_B" class="dragdealer blanco">
+                        <div class="handle"><span class="valorB"></span></div>
+                    </div>
+                    <p>Voto en blanco</p>
+                </div>
+                <div class="col-xs-3">
+                    <div class="valor MM"></div>
+                </div>
+            </div>
+            <div class="row candidato MM">
+                <div class="col-xs-3">
+                    <div class="valor DS"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="indicador DS pull-left"></div>
+                    <div class="indicador MM pull-right"></div>
+                    <div id="sliderMM" class="dragdealer">
+                        <div class="handle"><img src="img/mm.jpg" alt="Mauricio Macri"></div>
+                    </div>
+                    <div id="sliderMM_B" class="dragdealer blanco">
+                        <div class="handle"><span class="valorB"></span></div>
+                    </div>
+                    <p>Voto en blanco</p>
+                </div>
+                <div class="col-xs-3">
+                    <div class="valor MM"></div>
+                </div>
+            </div>
+            <div class="row candidato SM">
+                <div class="col-xs-3">
+                    <div class="valor DS"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="indicador DS pull-left"></div>
+                    <div class="indicador MM pull-right"></div>
+                    <div id="sliderSM" class="dragdealer">
+                        <div class="handle"><img src="img/sm.jpg" alt="Sergio Massa"></div>
+                    </div>
+                    <div id="sliderSM_B" class="dragdealer blanco">
+                        <div class="handle"><span class="valorB"></span></div>
+                    </div>
+                    <p>Voto en blanco</p>
+                </div>
+                <div class="col-xs-3">
+                    <div class="valor MM"></div>
+                </div>
+            </div>
+            <div class="row candidato DC">
+                <div class="col-xs-3">
+                    <div class="valor DS"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="indicador DS pull-left"></div>
+                    <div class="indicador MM pull-right"></div>
+                    <div id="sliderDC" class="dragdealer">
+                        <div class="handle"><img src="img/dc.jpg" alt="Nicolás Del Caño"></div>
+                    </div>
+                    <div id="sliderDC_B" class="dragdealer blanco">
+                        <div class="handle"><span class="valorB"></span></div>
+                    </div>
+                    <p>Voto en blanco</p>
+                </div>
+                <div class="col-xs-3">
+                    <div class="valor MM"></div>
+                </div>
+            </div>
+            <div class="row candidato MS">
+                <div class="col-xs-3">
+                    <div class="valor DS"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="indicador DS pull-left"></div>
+                    <div class="indicador MM pull-right"></div>
+                    <div id="sliderMS" class="dragdealer">
+                        <div class="handle"><img src="img/ms.jpg" alt="Margarita Stolbizer"></div>
+                    </div>
+                    <div id="sliderMS_B" class="dragdealer blanco">
+                        <div class="handle"><span class="valorB"></span></div>
+                    </div>
+                    <p>Voto en blanco</p>
+                </div>
+                <div class="col-xs-3">
+                    <div class="valor MM"></div>
+                </div>
+            </div>
+            <div class="row candidato RS">
+                <div class="col-xs-3">
+                    <div class="valor DS"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="indicador DS pull-left"></div>
+                    <div class="indicador MM pull-right"></div>
+                    <div id="sliderRS" class="dragdealer">
+                        <div class="handle"><img src="img/rs.jpg" alt="Adolfo Rodríguez Saa"></div>
+                    </div>
+                    <div id="sliderRS_B" class="dragdealer blanco">
+                        <div class="handle"><span class="valorB"></span></div>
+                    </div>
+                    <p>Voto en blanco</p>
+                </div>
+                <div class="col-xs-3">
+                    <div class="valor MM"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-sm-offset-1 texto">
+            <h4><span class="glyphicon glyphicon-info-sign"></span> Instrucciones</h4>
+            <p>Deslizar las fotos de los candidatos para modificar los porcentajes. Los valores indican la proporción de votantes (entre los que votaron a cada candidato en la primera vuelta) que elegirá a cada candidato en la segunda vuelta. Para cada uno también puede indicarse la proporción de electores que votará en blanco, y los porcentajes asignados son relativos al total de votos que quedan restando los votos en blanco.</p>
+            <p>&nbsp;</p>
+            <p><span class="glyphicon glyphicon-wrench"></span> Desarrollado por Luciano Amor [<a href="https://twitter.com/luchotuitea" target="_blank">@luchotuitea</a>]</p>
+            <p><span class="glyphicon glyphicon-random"></span> Basado en una idea de Andy Tow [<a href="https://twitter.com/andy_tow" target="_blank">@andy_tow</a> / <a href="http://www.andytow.com" target="_blank"> andytow.com</a>]</p>
+            <p><span class="glyphicon glyphicon-gift"></span> <a href="https://www.github.com/lucianoamor/balotaje2015" target="_blank"> Código fuente</a> (licencia GNU GPL)</p>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/dragdealer.js"></script>
+<script src="js/sim.js"></script>
+</body>
+</html>

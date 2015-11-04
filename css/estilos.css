@@ -1,0 +1,153 @@
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.titulos {
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+}
+.titulos h3 {
+    margin: 10px 0 30px;
+}
+.resultados {
+    background-color: #eee;
+    padding-top: 10px;
+}
+.resultados .glyphicon {
+    position: absolute;
+    left: 48%;
+    top: 9%;
+    font-size: 25px;
+    color: #008F06;
+}
+.resultados h2 {
+    text-align: center;
+    margin-top: 5px;
+}
+.resultados p.valor {
+    font-size: 40px;
+}
+.texto {
+    margin-top: 10px;
+    text-align: justify;
+}
+.texto .glyphicon {
+    color: #999;
+    margin-right: 5px;
+}
+.candidato {
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+.candidato:first-child {
+    padding: 0;
+    border: 0;
+}
+.candidato p {
+    font-size: .85em;
+    text-align: center;
+}
+.indicador {
+    height: 30px;
+    width: 50%;
+}
+.valor {
+    text-align: center;
+    font-size: 20px;
+}
+.dragdealer {
+    width: 80%;
+    left: 10%;
+    background: #cfcfcf;
+}
+.dragdealer .handle {
+    width: 50px;
+    height: 50px;
+    color: #FFF;
+    font-size: 14px;
+    line-height: 25px;
+    text-align: center;
+    margin-top: -12.5px;
+}
+.dragdealer .handle img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 4px;
+}
+.dragdealer.blanco {
+    margin-top: 15px;
+    height: 25px;
+    background: #ddd;
+}
+.dragdealer.blanco .handle {
+    width: 50px;
+    height: 25px;
+    margin-top: 0;
+    background-color: #fff;
+    color: #666;
+    border: 1px solid #999;
+    border-radius: 5px;
+    line-height: 23px;
+}
+/* candidatos */
+.DS .dragdealer .handle img {
+    border-color: #4682B4;
+}
+.DS.indicador {
+    background-color: #4682B4;
+}
+.DS.valor {
+    color: #4682B4;
+}
+/* --- */
+.MM .dragdealer .handle img {
+    border-color: #CFAA00;
+}
+.MM.indicador {
+    background-color: #CFAA00;
+}
+.MM.valor {
+    color: #CFAA00;
+}
+/* --- */
+.SM .dragdealer .handle img {
+    border-color: #AD04FD;
+}
+.SM.indicador {
+    background-color: #AD04FD;
+}
+.SM.valor {
+    color: #AD04FD;
+}
+/* --- */
+.DC .dragdealer .handle img {
+    border-color: #EE1C25;
+}
+.DC.indicador {
+    background-color: #EE1C25;
+}
+.DC.valor {
+    color: #EE1C25;
+}
+/* --- */
+.MS .dragdealer .handle img {
+    border-color: #EF5986;
+}
+.MS.indicador {
+    background-color: #EF5986;
+}
+.MS.valor {
+    color: #EF5986;
+}
+/* --- */
+.RS .dragdealer .handle img {
+    border-color: #263982;
+}
+.RS.indicador {
+    background-color: #263982;
+}
+.RS.valor {
+    color: #263982;
+}
