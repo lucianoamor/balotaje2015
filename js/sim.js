@@ -1,9 +1,21 @@
 $(document).ready(function() {
 
-    var iniDS = 0,
-        iniMM = 1,
-        iniBL = 0,
-        ini   = .5,
+    var data = {vDS: 0,
+                vMM: 1,
+                vSM:.5,
+                vDC:.5,
+                vMS:.5,
+                vRS:.5,
+                bDS:0,
+                bMM:0,
+                bSM:0,
+                bDC:0,
+                bMS:0,
+                bRS:0}
+
+    $.extend(true, data, $.deparam(location.search.substring(1, location.search.length -1)));
+
+    var ini   = .5,
         steps = 101;
 
     var votos = {
@@ -17,7 +29,7 @@ $(document).ready(function() {
 
     var sliderDS = new Dragdealer('sliderDS', {
         steps: steps,
-        x: iniDS,
+        x: data.vDS,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -28,7 +40,7 @@ $(document).ready(function() {
 
     var sliderDS_B = new Dragdealer('sliderDS_B', {
         steps: steps,
-        x: iniBL,
+        x: data.bDS,
         animationCallback: function(x, y) {
             $('#sliderDS_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -39,7 +51,7 @@ $(document).ready(function() {
 
     var sliderMM = new Dragdealer('sliderMM', {
         steps: steps,
-        x: iniMM,
+        x: data.vMM,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -50,7 +62,7 @@ $(document).ready(function() {
 
     var sliderMM_B = new Dragdealer('sliderMM_B', {
         steps: steps,
-        x: iniBL,
+        x: data.bMM,
         animationCallback: function(x, y) {
             $('#sliderMM_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -61,7 +73,7 @@ $(document).ready(function() {
 
     var sliderSM = new Dragdealer('sliderSM', {
         steps: steps,
-        x: ini,
+        x: data.vSM,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -72,7 +84,7 @@ $(document).ready(function() {
 
     var sliderSM_B = new Dragdealer('sliderSM_B', {
         steps: steps,
-        x: iniBL,
+        x: data.bSM,
         animationCallback: function(x, y) {
             $('#sliderSM_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -83,7 +95,7 @@ $(document).ready(function() {
 
     var sliderDC = new Dragdealer('sliderDC', {
         steps: steps,
-        x: ini,
+        x: data.vDC,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -94,7 +106,7 @@ $(document).ready(function() {
 
     var sliderDC_B = new Dragdealer('sliderDC_B', {
         steps: steps,
-        x: iniBL,
+        x: data.bDC,
         animationCallback: function(x, y) {
             $('#sliderDC_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -105,7 +117,7 @@ $(document).ready(function() {
 
     var sliderMS = new Dragdealer('sliderMS', {
         steps: steps,
-        x: ini,
+        x: data.vMS,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -116,7 +128,7 @@ $(document).ready(function() {
 
     var sliderMS_B = new Dragdealer('sliderMS_B', {
         steps: steps,
-        x: iniBL,
+        x: data.bMS,
         animationCallback: function(x, y) {
             $('#sliderMS_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -127,7 +139,7 @@ $(document).ready(function() {
 
     var sliderRS = new Dragdealer('sliderRS', {
         steps: steps,
-        x: ini,
+        x: data.vRS,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -138,7 +150,7 @@ $(document).ready(function() {
 
     var sliderRS_B = new Dragdealer('sliderRS_B', {
         steps: steps,
-        x: iniBL,
+        x: data.bRS,
         animationCallback: function(x, y) {
             $('#sliderRS_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -162,14 +174,8 @@ $(document).ready(function() {
         'RSB': sliderRS_B
     };
 
-    // ini
-    actualizar(iniDS, sliderDS);
-    actualizar(iniMM, sliderMM);
-    actualizar(ini, sliderSM);
-    actualizar(ini, sliderDC);
-    actualizar(ini, sliderMS);
-    actualizar(ini, sliderRS);
     resultado(sliders, votos);
+
 
 });
 
@@ -189,48 +195,52 @@ function actualizar(v, slider) {
     valMM.html(val+"%");
 }
 
+
 function resultado(sliders, votos) {
-    var vDS = sliders.DS.getValue()[0],
-        vMM = sliders.MM.getValue()[0],
-        vSM = sliders.SM.getValue()[0],
-        vDC = sliders.DC.getValue()[0],
-        vMS = sliders.MS.getValue()[0],
-        vRS = sliders.RS.getValue()[0],
-        bDS = sliders.DSB.getValue()[0],
-        bMM = sliders.MMB.getValue()[0],
-        bSM = sliders.SMB.getValue()[0],
-        bDC = sliders.DCB.getValue()[0],
-        bMS = sliders.MSB.getValue()[0],
-        bRS = sliders.RSB.getValue()[0];
+
+
+    var data = {vDS: sliders.DS.getValue()[0],
+                vMM:sliders.MM.getValue()[0],
+                vSM:sliders.SM.getValue()[0],
+                vDC:sliders.DC.getValue()[0],
+                vMS:sliders.MS.getValue()[0],
+                vRS:sliders.RS.getValue()[0],
+                bDS:sliders.DSB.getValue()[0],
+                bMM:sliders.MMB.getValue()[0],
+                bSM:sliders.SMB.getValue()[0],
+                bDC:sliders.DCB.getValue()[0],
+                bMS:sliders.MSB.getValue()[0],
+                bRS:sliders.RSB.getValue()[0]}
+    history.replaceState(null, null, '?' + $.param(data));
 
     var tDS;
-    tDS = votos.DS - (votos.DS * bDS);
-    tDS *= 1 - vDS;
+    tDS = votos.DS - (votos.DS * parseFloat(data.bDS));
+    tDS *= 1 - parseFloat(data.vDS);
 
     var tMM;
-    tMM = votos.MM - (votos.MM * bMM);
-    tMM *= vMM;
+    tMM = votos.MM - (votos.MM * parseFloat(data.bMM));
+    tMM *= parseFloat(data.vMM);
 
 
     var tSM;
-    tSM = votos.SM - (votos.SM * bSM);
-    tDS += tSM * (1 - vSM);
-    tMM += tSM * vSM;
+    tSM = votos.SM - (votos.SM * parseFloat(data.bSM));
+    tDS += tSM * (1 - parseFloat(data.vSM));
+    tMM += tSM * parseFloat(data.vSM);
 
     var tDC;
-    tDC = votos.DC - (votos.DC * bDC);
-    tDS += tDC * (1 - vDC);
-    tMM += tDC * vDC;
+    tDC = votos.DC - (votos.DC * parseFloat(data.bDC));
+    tDS += tDC * (1 - parseFloat(data.vDC));
+    tMM += tDC * parseFloat(data.vDC);
 
     var tMS;
-    tMS = votos.MS - (votos.MS * bMS);
-    tDS += tMS * (1 - vMS);
-    tMM += tMS * vMS;
+    tMS = votos.MS - (votos.MS * parseFloat(data.bMS));
+    tDS += tMS * (1 - parseFloat(data.vMS));
+    tMM += tMS * parseFloat(data.vMS);
 
     var tRS;
-    tRS = votos.RS - (votos.RS * bRS);
-    tDS += tRS * (1 - vRS);
-    tMM += tRS * vRS;
+    tRS = votos.RS - (votos.RS * parseFloat(data.bRS));
+    tDS += tRS * (1 - parseFloat(data.vRS));
+    tMM += tRS * parseFloat(data.vRS);
 
     var total = tDS + tMM,
         pDS = tDS / total * 100,
