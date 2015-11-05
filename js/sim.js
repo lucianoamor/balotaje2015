@@ -7,12 +7,18 @@ $(document).ready(function() {
             DC: .5,
             MS: .5,
             RS: .5,
+			BL: .5,
+			AN: .5,
+			AU: .5,
             DSB: 0,
             MMB: 0,
             SMB: 0,
             DCB: 0,
             MSB: 0,
-            RSB: 0
+            RSB: 0,
+			BLB: 1,
+			ANB: 1,
+			AUB: 1
         },
         steps = 101,
         votos = {
@@ -21,7 +27,10 @@ $(document).ready(function() {
             SM: 5386965,
             DC: 812530,
             MS: 632551,
-            RS: 412577
+            RS: 412577,
+			BL: 664739,
+			AN: 199446,
+			AU: 6015089
         },
         get = $.deparam(location.search.substring(1));
 
@@ -36,7 +45,7 @@ $(document).ready(function() {
     $.extend(true, ini, get);
 
     if(typeof history.replaceState !== 'undefined') { // html4 browsers
-        history.replaceState({}, '', location.protocol + '//' + location.host + location.pathname);
+       // history.replaceState({}, '', location.protocol + '//' + location.host + location.pathname);
     }
 
     var sliderDS = new Dragdealer('sliderDS', {
@@ -170,6 +179,72 @@ $(document).ready(function() {
             resultado(sliders, votos);
         }
     });
+	
+	var sliderBL = new Dragdealer('sliderBL', {
+        steps: steps,
+        x: ini.BL,
+        animationCallback: function(x, y) {
+            actualizar(x, this);
+        },
+        dragStopCallback: function(x, y) {
+            resultado(sliders, votos);
+        }
+    });
+	
+	var sliderBL_B = new Dragdealer('sliderBL_B', {
+        steps: steps,
+        x: ini.BLB,
+        animationCallback: function(x, y) {
+            $('#sliderBL_B .valorB').text(Math.round(x * 100)+' %');
+        },
+        dragStopCallback: function(x, y) {
+            resultado(sliders, votos);
+        }
+    });
+	
+	var sliderAN = new Dragdealer('sliderAN', {
+        steps: steps,
+        x: ini.AN,
+        animationCallback: function(x, y) {
+            actualizar(x, this);
+        },
+        dragStopCallback: function(x, y) {
+            resultado(sliders, votos);
+        }
+    });
+	
+	var sliderAN_B = new Dragdealer('sliderAN_B', {
+        steps: steps,
+        x: ini.ANB,
+        animationCallback: function(x, y) {
+            $('#sliderAN_B .valorB').text(Math.round(x * 100)+' %');
+        },
+        dragStopCallback: function(x, y) {
+            resultado(sliders, votos);
+        }
+    });
+	
+	var sliderAU = new Dragdealer('sliderAU', {
+        steps: steps,
+        x: ini.AU,
+        animationCallback: function(x, y) {
+            actualizar(x, this);
+        },
+        dragStopCallback: function(x, y) {
+            resultado(sliders, votos);
+        }
+    });
+	
+	var sliderAU_B = new Dragdealer('sliderAU_B', {
+        steps: steps,
+        x: ini.AUB,
+        animationCallback: function(x, y) {
+            $('#sliderAU_B .valorB').text(Math.round(x * 100)+' %');
+        },
+        dragStopCallback: function(x, y) {
+            resultado(sliders, votos);
+        }
+    });
 
     var sliders = {
         DS: sliderDS,
@@ -178,12 +253,18 @@ $(document).ready(function() {
         DC: sliderDC,
         MS: sliderMS,
         RS: sliderRS,
+		BL: sliderBL,
+		AN: sliderAN,
+		AU: sliderAU,
         DSB: sliderDS_B,
         MMB: sliderMM_B,
         SMB: sliderSM_B,
         DCB: sliderDC_B,
         MSB: sliderMS_B,
-        RSB: sliderRS_B
+        RSB: sliderRS_B,
+		BLB: sliderBL_B,
+		ANB: sliderAN_B,
+		AUB: sliderAU_B
     };
 
     resultado(sliders, votos);
@@ -214,12 +295,18 @@ function resultado(sliders, votos) {
         DC: sliders.DC.getValue()[0],
         MS: sliders.MS.getValue()[0],
         RS: sliders.RS.getValue()[0],
+		BL: sliders.BL.getValue()[0],
+		AN: sliders.AN.getValue()[0],
+		AU: sliders.AU.getValue()[0],
         DSB: sliders.DSB.getValue()[0],
         MMB: sliders.MMB.getValue()[0],
         SMB: sliders.SMB.getValue()[0],
         DCB: sliders.DCB.getValue()[0],
         MSB: sliders.MSB.getValue()[0],
-        RSB: sliders.RSB.getValue()[0]
+        RSB: sliders.RSB.getValue()[0],
+		BLB: sliders.BLB.getValue()[0],
+		ANB: sliders.ANB.getValue()[0],
+		AUB: sliders.AUB.getValue()[0]
     };
 
     var tDS0;
@@ -255,6 +342,21 @@ function resultado(sliders, votos) {
     tRS = votos.RS - (votos.RS * sliderVal.RSB);
     tDS += tRS * (1 - sliderVal.RS);
     tMM += tRS * sliderVal.RS;
+	
+	var tBL;
+    tBL = votos.BL - (votos.BL * sliderVal.BLB);
+    tDS += tBL * (1 - sliderVal.BL);
+    tMM += tBL * sliderVal.BL;
+	
+	var tAN;
+    tAN = votos.AN - (votos.AN * sliderVal.ANB);
+    tDS += tAN * (1 - sliderVal.AN);
+    tMM += tAN * sliderVal.AN;
+	
+	var tAU;
+    tAU = votos.AU - (votos.AU * sliderVal.AUB);
+    tDS += tAU * (1 - sliderVal.AU);
+    tMM += tAU * sliderVal.AU;
 
     var total = tDS + tMM,
         pDS = tDS / total * 100,
