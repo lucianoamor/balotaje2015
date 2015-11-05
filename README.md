@@ -10,5 +10,5 @@ Basado en una idea de **Andy Tow** > [@andy_tow](https://twitter.com/andy_tow) /
 * Martín Gaitán > [@tin_nqn_](https://twitter.com/tin_nqn_)
 * Juan Microagencia > [@microagencia](https://twitter.com/microagencia)
 
-####  icencia
+####  Licencia
 GNU GPL
