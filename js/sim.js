@@ -28,7 +28,7 @@ $(document).ready(function() {
     // valida input
     Object.keys(get).map(function(v) {
         var val = parseFloat(get[v]);
-        if(val < 0 || val > 1) {
+        if(val < 0 || val > 1 || isNaN(val)) {
             get[v] = ini[v];
         }
     });
