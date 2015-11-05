@@ -45,7 +45,7 @@ $(document).ready(function() {
     $.extend(true, ini, get);
 
     if(typeof history.replaceState !== 'undefined') { // html4 browsers
-       // history.replaceState({}, '', location.protocol + '//' + location.host + location.pathname);
+       history.replaceState({}, '', location.protocol + '//' + location.host + location.pathname);
     }
 
     var sliderDS = new Dragdealer('sliderDS', {
@@ -179,7 +179,7 @@ $(document).ready(function() {
             resultado(sliders, votos);
         }
     });
-	
+
 	var sliderBL = new Dragdealer('sliderBL', {
         steps: steps,
         x: ini.BL,
@@ -190,7 +190,7 @@ $(document).ready(function() {
             resultado(sliders, votos);
         }
     });
-	
+
 	var sliderBL_B = new Dragdealer('sliderBL_B', {
         steps: steps,
         x: ini.BLB,
@@ -201,7 +201,7 @@ $(document).ready(function() {
             resultado(sliders, votos);
         }
     });
-	
+
 	var sliderAN = new Dragdealer('sliderAN', {
         steps: steps,
         x: ini.AN,
@@ -212,7 +212,7 @@ $(document).ready(function() {
             resultado(sliders, votos);
         }
     });
-	
+
 	var sliderAN_B = new Dragdealer('sliderAN_B', {
         steps: steps,
         x: ini.ANB,
@@ -223,7 +223,7 @@ $(document).ready(function() {
             resultado(sliders, votos);
         }
     });
-	
+
 	var sliderAU = new Dragdealer('sliderAU', {
         steps: steps,
         x: ini.AU,
@@ -234,7 +234,7 @@ $(document).ready(function() {
             resultado(sliders, votos);
         }
     });
-	
+
 	var sliderAU_B = new Dragdealer('sliderAU_B', {
         steps: steps,
         x: ini.AUB,
@@ -268,6 +268,8 @@ $(document).ready(function() {
     };
 
     resultado(sliders, votos);
+
+    $('.handle img').tooltip();
 
 });
 
@@ -342,17 +344,17 @@ function resultado(sliders, votos) {
     tRS = votos.RS - (votos.RS * sliderVal.RSB);
     tDS += tRS * (1 - sliderVal.RS);
     tMM += tRS * sliderVal.RS;
-	
+
 	var tBL;
     tBL = votos.BL - (votos.BL * sliderVal.BLB);
     tDS += tBL * (1 - sliderVal.BL);
     tMM += tBL * sliderVal.BL;
-	
+
 	var tAN;
     tAN = votos.AN - (votos.AN * sliderVal.ANB);
     tDS += tAN * (1 - sliderVal.AN);
     tMM += tAN * sliderVal.AN;
-	
+
 	var tAU;
     tAU = votos.AU - (votos.AU * sliderVal.AUB);
     tDS += tAU * (1 - sliderVal.AU);

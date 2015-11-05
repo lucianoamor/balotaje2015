@@ -16,7 +16,7 @@ body {
 .resultados .glyphicon {
     position: absolute;
     left: 48%;
-    top: 9%;
+    top: 6%;
     font-size: 25px;
     color: #008F06;
 }
@@ -175,31 +175,31 @@ body {
 }
 /* --- */
 .BL .dragdealer .handle img {
-    border-color: #DDDDDD;
+    border-color: #ddd;
 }
 .BL.indicador {
-    background-color: #DDDDDD;
+    background-color: #ddd;
 }
 .BL.valor {
-    color: #DDDDDD;
+    color: #ddd;
 }
 /* --- */
 .AN .dragdealer .handle img {
-    border-color: #FF0000;
+    border-color: #EC971F;
 }
 .AN.indicador {
-    background-color: #FF0000;
+    background-color: #EC971F;
 }
 .AN.valor {
-    color: #FF0000;
+    color: #EC971F;
 }
 /* --- */
 .AU .dragdealer .handle img {
-    border-color: #000000;
+    border-color: #999;
 }
 .AU.indicador {
-    background-color: #000000;
+    background-color: #999;
 }
 .AU.valor {
-    color: #000000;
+    color: #999;
 }
