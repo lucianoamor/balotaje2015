@@ -27,13 +27,17 @@ $(document).ready(function() {
 
     // valida input
     Object.keys(get).map(function(v) {
-        if(v < 0 || v > 1) {
-            get[v] = null;
+        var val = parseFloat(get[v]);
+        if(val < 0 || val > 1) {
+            get[v] = ini[v];
         }
     });
+
     $.extend(true, ini, get);
 
-    history.replaceState({}, '', location.protocol + '//' + location.host + location.pathname);
+    if(typeof history.replaceState !== 'undefined') { // html4 browsers
+        history.replaceState({}, '', location.protocol + '//' + location.host + location.pathname);
+    }
 
     var sliderDS = new Dragdealer('sliderDS', {
         steps: steps,
