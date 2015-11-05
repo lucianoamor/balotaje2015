@@ -29,18 +29,24 @@ body {
 }
 .texto {
     margin-top: 10px;
-}
-.texto p {
-    margin-bottom: 5px;
+    font-size: 13px;
 }
 .texto .glyphicon {
-    color: #999;
+    color: #EC971F;
     margin-right: 5px;
 }
 .texto code {
     display: block;
     padding: 0;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+}
+.texto .creditos {
+    font-size: 12px;
+    padding-top: 10px;
+    border-top: 1px dotted #ccc;
+}
+.texto .creditos p {
+    margin-bottom: 4px;
 }
 .candidato {
     padding-top: 20px;
@@ -108,6 +114,9 @@ body {
 .DS.valor {
     color: #4682B4;
 }
+.texto span.DS {
+    color: #4682B4;
+}
 /* --- */
 .MM .dragdealer .handle img {
     border-color: #CFAA00;
@@ -117,6 +126,9 @@ body {
 }
 .MM.valor {
     color: #CFAA00;
+}
+.texto span.MM {
+    color: #BF9D00;
 }
 /* --- */
 .SM .dragdealer .handle img {
@@ -136,6 +148,9 @@ body {
     background-color: #EE1C25;
 }
 .DC.valor {
+    color: #EE1C25;
+}
+.texto span.DC {
     color: #EE1C25;
 }
 /* --- */
