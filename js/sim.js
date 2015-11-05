@@ -1,23 +1,43 @@
 $(document).ready(function() {
 
-    var iniDS = 0,
-        iniMM = 1,
-        iniBL = 0,
-        ini   = .5,
-        steps = 101;
+    var ini = {
+            DS: 0,
+            MM: 1,
+            SM: .5,
+            DC: .5,
+            MS: .5,
+            RS: .5,
+            DSB: 0,
+            MMB: 0,
+            SMB: 0,
+            DCB: 0,
+            MSB: 0,
+            RSB: 0
+        },
+        steps = 101,
+        votos = {
+            DS: 9338449,
+            MM: 8601063,
+            SM: 5386965,
+            DC: 812530,
+            MS: 632551,
+            RS: 412577
+        },
+        get = $.deparam(location.search.substring(1));
 
-    var votos = {
-        'DS': 9338449,
-        'MM': 8601063,
-        'SM': 5386965,
-        'DC': 812530,
-        'MS': 632551,
-        'RS': 412577
-    };
+    // valida input
+    Object.keys(get).map(function(v) {
+        if(v < 0 || v > 1) {
+            get[v] = null;
+        }
+    });
+    $.extend(true, ini, get);
+
+    history.replaceState({}, '', location.protocol + '//' + location.host + location.pathname);
 
     var sliderDS = new Dragdealer('sliderDS', {
         steps: steps,
-        x: iniDS,
+        x: ini.DS,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -28,7 +48,7 @@ $(document).ready(function() {
 
     var sliderDS_B = new Dragdealer('sliderDS_B', {
         steps: steps,
-        x: iniBL,
+        x: ini.DSB,
         animationCallback: function(x, y) {
             $('#sliderDS_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -39,7 +59,7 @@ $(document).ready(function() {
 
     var sliderMM = new Dragdealer('sliderMM', {
         steps: steps,
-        x: iniMM,
+        x: ini.MM,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -50,7 +70,7 @@ $(document).ready(function() {
 
     var sliderMM_B = new Dragdealer('sliderMM_B', {
         steps: steps,
-        x: iniBL,
+        x: ini.MMB,
         animationCallback: function(x, y) {
             $('#sliderMM_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -61,7 +81,7 @@ $(document).ready(function() {
 
     var sliderSM = new Dragdealer('sliderSM', {
         steps: steps,
-        x: ini,
+        x: ini.SM,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -72,7 +92,7 @@ $(document).ready(function() {
 
     var sliderSM_B = new Dragdealer('sliderSM_B', {
         steps: steps,
-        x: iniBL,
+        x: ini.SMB,
         animationCallback: function(x, y) {
             $('#sliderSM_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -83,7 +103,7 @@ $(document).ready(function() {
 
     var sliderDC = new Dragdealer('sliderDC', {
         steps: steps,
-        x: ini,
+        x: ini.DC,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -94,7 +114,7 @@ $(document).ready(function() {
 
     var sliderDC_B = new Dragdealer('sliderDC_B', {
         steps: steps,
-        x: iniBL,
+        x: ini.DCB,
         animationCallback: function(x, y) {
             $('#sliderDC_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -105,7 +125,7 @@ $(document).ready(function() {
 
     var sliderMS = new Dragdealer('sliderMS', {
         steps: steps,
-        x: ini,
+        x: ini.MS,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -116,7 +136,7 @@ $(document).ready(function() {
 
     var sliderMS_B = new Dragdealer('sliderMS_B', {
         steps: steps,
-        x: iniBL,
+        x: ini.MSB,
         animationCallback: function(x, y) {
             $('#sliderMS_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -127,7 +147,7 @@ $(document).ready(function() {
 
     var sliderRS = new Dragdealer('sliderRS', {
         steps: steps,
-        x: ini,
+        x: ini.RS,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -138,7 +158,7 @@ $(document).ready(function() {
 
     var sliderRS_B = new Dragdealer('sliderRS_B', {
         steps: steps,
-        x: iniBL,
+        x: ini.RSB,
         animationCallback: function(x, y) {
             $('#sliderRS_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -148,27 +168,20 @@ $(document).ready(function() {
     });
 
     var sliders = {
-        'DS': sliderDS,
-        'MM': sliderMM,
-        'SM': sliderSM,
-        'DC': sliderDC,
-        'MS': sliderMS,
-        'RS': sliderRS,
-        'DSB': sliderDS_B,
-        'MMB': sliderMM_B,
-        'SMB': sliderSM_B,
-        'DCB': sliderDC_B,
-        'MSB': sliderMS_B,
-        'RSB': sliderRS_B
+        DS: sliderDS,
+        MM: sliderMM,
+        SM: sliderSM,
+        DC: sliderDC,
+        MS: sliderMS,
+        RS: sliderRS,
+        DSB: sliderDS_B,
+        MMB: sliderMM_B,
+        SMB: sliderSM_B,
+        DCB: sliderDC_B,
+        MSB: sliderMS_B,
+        RSB: sliderRS_B
     };
 
-    // ini
-    actualizar(iniDS, sliderDS);
-    actualizar(iniMM, sliderMM);
-    actualizar(ini, sliderSM);
-    actualizar(ini, sliderDC);
-    actualizar(ini, sliderMS);
-    actualizar(ini, sliderRS);
     resultado(sliders, votos);
 
 });
@@ -180,62 +193,64 @@ function actualizar(v, slider) {
     // indicador
     var indDS = div.find('.indicador.DS'),
         indMM = div.find('.indicador.MM');
-    indDS.css('opacity', 1-val/100);
-    indMM.css('opacity', val/100);
+    indDS.css('opacity', 1 - val / 100);
+    indMM.css('opacity', val / 100);
     // valor
     var valDS = div.find('.valor.DS'),
         valMM = div.find('.valor.MM');
-    valDS.html(100-val+"%");
-    valMM.html(val+"%");
+    valDS.html(100 - val + "%");
+    valMM.html(val + "%");
 }
 
 function resultado(sliders, votos) {
-    var vDS = sliders.DS.getValue()[0],
-        vMM = sliders.MM.getValue()[0],
-        vSM = sliders.SM.getValue()[0],
-        vDC = sliders.DC.getValue()[0],
-        vMS = sliders.MS.getValue()[0],
-        vRS = sliders.RS.getValue()[0],
-        bDS = sliders.DSB.getValue()[0],
-        bMM = sliders.MMB.getValue()[0],
-        bSM = sliders.SMB.getValue()[0],
-        bDC = sliders.DCB.getValue()[0],
-        bMS = sliders.MSB.getValue()[0],
-        bRS = sliders.RSB.getValue()[0];
+    var sliderVal = {
+        DS: sliders.DS.getValue()[0],
+        MM: sliders.MM.getValue()[0],
+        SM: sliders.SM.getValue()[0],
+        DC: sliders.DC.getValue()[0],
+        MS: sliders.MS.getValue()[0],
+        RS: sliders.RS.getValue()[0],
+        DSB: sliders.DSB.getValue()[0],
+        MMB: sliders.MMB.getValue()[0],
+        SMB: sliders.SMB.getValue()[0],
+        DCB: sliders.DCB.getValue()[0],
+        MSB: sliders.MSB.getValue()[0],
+        RSB: sliders.RSB.getValue()[0]
+    };
 
     var tDS0;
-    tDS0 = votos.DS - (votos.DS * bDS);
+    tDS0 = votos.DS - (votos.DS * sliderVal.DSB);
 
     var tMM0;
-    tMM0 = votos.MM - (votos.MM * bMM);
+    tMM0 = votos.MM - (votos.MM * sliderVal.MMB);
 
     var tDS = 0;
-    tDS += tDS0 * (1 - vDS);
-    tDS += tMM0 * (1 - vMM);
+    tDS += tDS0 * (1 - sliderVal.DS);
+    tDS += tMM0 * (1 - sliderVal.MM);
 
     var tMM = 0;
-    tMM += tMM0 * vMM;
-    tMM += tDS0 * vDS;
+    tMM += tMM0 * sliderVal.MM;
+    tMM += tDS0 * sliderVal.DS;
 
     var tSM;
-    tSM = votos.SM - (votos.SM * bSM);
-    tDS += tSM * (1 - vSM);
-    tMM += tSM * vSM;
+    tSM = votos.SM - (votos.SM * sliderVal.SMB);
+    tDS += tSM * (1 - sliderVal.SM);
+    tMM += tSM * sliderVal.SM;
 
     var tDC;
-    tDC = votos.DC - (votos.DC * bDC);
-    tDS += tDC * (1 - vDC);
-    tMM += tDC * vDC;
+    tDC = votos.DC - (votos.DC * sliderVal.DCB);
+    tDS += tDC * (1 - sliderVal.DC);
+    tMM += tDC * sliderVal.DC;
 
     var tMS;
-    tMS = votos.MS - (votos.MS * bMS);
-    tDS += tMS * (1 - vMS);
-    tMM += tMS * vMS;
+    tMS = votos.MS - (votos.MS * sliderVal.MSB);
+    tDS += tMS * (1 - sliderVal.MS);
+    tMM += tMS * sliderVal.MS;
 
     var tRS;
-    tRS = votos.RS - (votos.RS * bRS);
-    tDS += tRS * (1 - vRS);
-    tMM += tRS * vRS;
+    tRS = votos.RS - (votos.RS * sliderVal.RSB);
+    tDS += tRS * (1 - sliderVal.RS);
+    tMM += tRS * sliderVal.RS;
 
     var total = tDS + tMM,
         pDS = tDS / total * 100,
@@ -262,5 +277,7 @@ function resultado(sliders, votos) {
             divMM.parent().siblings('.glyphicon').removeClass('glyphicon-hand-left').addClass('glyphicon-hand-right');
         }
     }
+
+    $('.texto code span').text($.param(sliderVal));
 
 }

@@ -29,11 +29,18 @@ body {
 }
 .texto {
     margin-top: 10px;
-    text-align: justify;
+}
+.texto p {
+    margin-bottom: 5px;
 }
 .texto .glyphicon {
     color: #999;
     margin-right: 5px;
+}
+.texto code {
+    display: block;
+    padding: 0;
+    margin-bottom: 30px;
 }
 .candidato {
     padding-top: 20px;
